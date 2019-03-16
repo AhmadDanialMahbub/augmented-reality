@@ -1,0 +1,56 @@
+<html>
+  <head>
+     <title>Hello, WebVR! - A-Frame</title>
+     <meta name="description" content="Hello, WebVR! - A-Frame">
+     <script src="js/aframe.min.js"></script>
+     <script src="js/aframe-ar.js"></script>
+     <meta name="apple-mobile-web-app-capable">
+  </head>
+  
+  <body>
+     <a-scene embedded arjs="sourceType: webcam;">
+       <a-assets> 
+          <a-asset-item id="dino" src="assets/scene.gltf"></a-asset-item>
+        
+           <!-- <video muted="true" autoplay crossorigin loop="true" webkit-playsinline id="video1" 
+           src="assets/contoh.mp4"></video> -->
+       </a-assets> 
+       
+
+      <!-- OBJS / COMPONENTS -->
+        <a-marker type="pattern" url="pattern/pattern-marker.patt">
+          <a-entity  gltf-model="#dino" 
+          position="0 0 0"
+        rotation="0 0 0"
+        
+        >
+  </a-entity>
+          
+          <!-- <a-video src="#video1" 
+                  rotation="-90 0 0" 
+                position="0 0 0">
+           </a-video> -->
+        </a-marker>
+      
+        <!-- add a simple camera -->
+		    <a-entity camera></a-entity>
+      </a-scene>
+    <script>
+   
+  function addListener (){
+    var els = document.querySelectorAll("video");
+
+    for(var i =0;i < els.length;i++) {
+      var el = els[i];
+      
+      if (el.paused) {
+        el.play();
+      }
+    }
+  }
+  window.addEventListener('click', addListener);
+
+  </script>
+
+  </body>
+</html>
